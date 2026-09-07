@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Express 🍔</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#fffaf6;
+    color:#222;
+}
+
+/* HEADER */
+header{
+    height:75px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 15px #00000015;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ff4d16;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#222;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ff4d16;
+}
+
+.cart-btn{
+    border:0;
+    background:#ff4d16;
+    color:white;
+    padding:12px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.cart-count{
+    background:white;
+    color:#ff4d16;
+    padding:3px 7px;
+    border-radius:50%;
+    margin-left:5px;
+}
+
+/* HERO */
+.hero{
+    min-height:600px;
+    padding:70px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+    background:linear-gradient(135deg,#fff3e9,#fff);
+}
+
+.hero-text{
+    max-width:600px;
+}
+
+.hero-text small{
+    color:#ff4d16;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.hero h1{
+    font-size:65px;
+    line-height:1.05;
+    margin:20px 0;
+}
+
+.hero h1 span{
+    color:#ff4d16;
+}
+
+.hero p{
+    color:#666;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.hero-btn{
+    display:inline-block;
+    background:#ff4d16;
+    color:white;
+    text-decoration:none;
+    padding:16px 28px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.hero-img{
+    width:48%;
+}
+
+.hero-img img{
+    width:100%;
+    border-radius:30px;
+    box-shadow:0 20px 50px #0003;
+}
+
+/* MENU */
+.menu{
+    padding:80px 6%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.title small{
+    color:#ff4d16;
+    font-weight:bold;
+}
+
+.title h2{
+    font-size:42px;
+    margin:10px 0;
+}
+
+.title p{
+    color:#777;
+}
+
+.categories{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.categories button{
+    border:2px solid #eee;
+    background:white;
+    padding:12px 22px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.categories button.active,
+.categories button:hover{
+    background:#ff4d16;
+    color:white;
+    border-color:#ff4d16;
+}
+
+/* PRODUCTS */
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px #00000010;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 35px #00000018;
+}
+
+.card-img{
+    height:220px;
+    overflow:hidden;
+}
+
+.card-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h3{
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:#777;
+    font-size:14px;
+    line-height:1.5;
+    min-height:42px;
+}
+
+.price{
+    color:#ff4d16;
+    font-size:22px;
+    font-weight:900;
+    margin:15px 0;
+}
+
+.add-btn{
+    width:100%;
+    border:0;
+    background:#ff4d16;
+    color:white;
+    padding:13px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add-btn:hover{
+    background:#e63f0d;
+}
+
+/* DELIVERY */
+.delivery{
+    background:#222;
+    color:white;
+    padding:70px 7%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    text-align:center;
+}
+
+.delivery-box{
+    padding:20px;
+}
+
+.delivery-icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.delivery-box h3{
+    margin-bottom:10px;
+}
+
+.delivery-box p{
+    color:#bbb;
+    line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer h2{
+    margin-bottom:15px;
+}
+
+footer span{
+    color:#ff4d16;
+}
+
+footer p{
+    color:#aaa;
+    margin:10px;
+}
+
+footer a{
+    color:#25d366;
+    text-decoration:none;
+}
+
+/* CART OVERLAY */
+.overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#0008;
+    z-index:2000;
+}
+
+.overlay.show{
+    display:block;
+}
+
+/* CART */
+.cart{
+    position:fixed;
+    top:0;
+    right:-450px;
+    width:430px;
+    max-width:95%;
+    height:100vh;
+    background:white;
+    z-index:3000;
+    padding:30px;
+    transition:.4s;
+    overflow-y:auto;
+}
+
+.cart.open{
+    right:0;
+}
+
+.close{
+    float:right;
+    border:0;
+    background:#eee;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:22px;
+}
+
+.cart h2{
+    margin:10px 0 25px;
+}
+
+.cart-item{
+    display:flex;
+    gap:12px;
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+.cart-item img{
+    width:75px;
+    height:75px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info h4{
+    margin-bottom:6px;
+}
+
+.cart-item-info small{
+    color:#ff4d16;
+    font-weight:bold;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+}
+
+.quantity button{
+    width:27px;
+    height:27px;
+    border:0;
+    background:#eee;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.remove{
+    border:0;
+    background:none;
+    color:red;
+    cursor:pointer;
+}
+
+.summary{
+    margin-top:25px;
+    background:#fff6f0;
+    padding:20px;
+    border-radius:15px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+}
+
+.summary small{
+    display:block;
+    color:#25a05a;
+    margin-top:8px;
+}
+
+.total{
+    border-top:2px solid #eee;
+    margin-top:10px;
+    padding-top:15px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.total strong{
+    color:#ff4d16;
+}
+
+.checkout-btn{
+    width:100%;
+    margin-top:20px;
+    border:0;
+    padding:16px;
+    background:#25d366;
+    color:white;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#0009;
+    z-index:4000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    background:white;
+    width:500px;
+    max-width:100%;
+    max-height:90vh;
+    overflow:auto;
+    border-radius:22px;
+    padding:30px;
+    position:relative;
+}
+
+.modal-box h2{
+    margin-bottom:8px;
+}
+
+.modal-box p{
+    color:#777;
+    margin-bottom:25px;
+}
+
+.modal-close{
+    position:absolute;
+    right:20px;
+    top:20px;
+    border:0;
+    background:#eee;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-family:inherit;
+    outline:none;
+}
+
+.form-group textarea{
+    height:90px;
+    resize:vertical;
+}
+
+.order-total{
+    background:#fff6f0;
+    padding:15px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.order-total strong{
+    color:#ff4d16;
+}
+
+.whatsapp{
+    width:100%;
+    padding:15px;
+    border:0;
+    background:#25d366;
+    color:white;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+    .products{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+}
+
+@media(max-width:800px){
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-img{
+        width:100%;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .delivery{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+    .hero{
+        padding:50px 20px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .menu{
+        padding:60px 15px;
+    }
+
+    .title h2{
+        font-size:32px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .cart{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="#home" class="logo">
+        FOOD<span>EXPRESS</span>
+    </a>
+
+    <nav>
+        <a href="#home">Accueil</a>
+        <a href="#menu">Menu</a>
+        <a href="#delivery">Livraison</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="cart-btn" onclick="openCart()">
+        🛒 Panier
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <small>🔥 FAST FOOD & LIVRAISON</small>
+
+        <h1>
+            Le goût qui vient
+            <span>chez vous.</span>
+        </h1>
+
+        <p>
+            Burgers, pizzas, tacos, sandwichs et boissons.
+            Commandez facilement et recevez votre repas
+            directement chez vous.
+        </p>
+
+        <a href="#menu" class="hero-btn">
+            🍔 Commander maintenant
+        </a>
+
+    </div>
+
+    <div class="hero-img">
+
+        <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=90"
+            alt="Burger"
+        >
+
+    </div>
+
+</section>
+
+
+<section class="menu" id="menu">
+
+    <div class="title">
+        <small>NOTRE MENU</small>
+
+        <h2>
+            Choisis ton repas 🍔
+        </h2>
+
+        <p>
+            Des produits délicieux préparés à la commande.
+        </p>
+    </div>
+
+
+    <div class="categories">
+
+        <button class="active" onclick="filterProducts('all',this)">
+            🍽️ Tout
+        </button>
+
+        <button onclick="filterProducts('burger',this)">
+            🍔 Burgers
+        </button>
+
+        <button onclick="filterProducts('pizza',this)">
+            🍕 Pizzas
+        </button>
+
+        <button onclick="filterProducts('tacos',this)">
+            🌯 Tacos
+        </button>
+
+        <button onclick="filterProducts('sandwich',this)">
+            🥪 Sandwichs
+        </button>
+
+        <button onclick="filterProducts('boisson',this)">
+            🥤 Boissons
+        </button>
+
+    </div>
+
+
+    <div class="products" id="products"></div>
+
+</section>
+
+
+<section class="delivery" id="delivery">
+
+    <div class="delivery-box">
+
+        <div class="delivery-icon">🚀</div>
+
+        <h3>Livraison rapide</h3>
+
+        <p>
+            Livraison rapide directement
+            chez vous.
+        </p>
+
+    </div>
+
+
+    <div class="delivery-box">
+
+        <div class="delivery-icon">🍔</div>
+
+        <h3>Produits frais</h3>
+
+        <p>
+            Des ingrédients frais et
+            préparés à la commande.
+        </p>
+
+    </div>
+
+
+    <div class="delivery-box">
+
+        <div class="delivery-icon">💬</div>
+
+        <h3>Commande WhatsApp</h3>
+
+        <p>
+            Commandez facilement avec
+            WhatsApp.
+        </p>
+
+    </div>
+
+</section>
+
+
+<footer id="contact">
+
+    <h2>
+        FOOD<span>EXPRESS</span>
+    </h2>
+
+    <p>
+        🍔 Fast food • 🚀 Livraison • 💬 WhatsApp
+    </p>
+
+    <p>
+        📱
+        <a
+            href="https://wa.me/21628196516"
+            target="_blank"
+        >
+            28 196 516
+        </a>
+    </p>
+
+    <p>
+        © 2026 Food Express
+    </p>
+
+</footer>
+
+
+<!-- CART -->
+
+<div
+    class="overlay"
+    id="overlay"
+    onclick="closeCart()"
+></div>
+
+
+<div class="cart" id="cart">
+
+    <button
+        class="close"
+        onclick="closeCart()"
+    >
+        ×
+    </button>
+
+    <h2>🛒 Votre panier</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="summary">
+
+        <div class="summary-row">
+            <span>Sous-total</span>
+            <strong id="subtotal">0.00 DT</strong>
+        </div>
+
+        <div class="summary-row">
+            <span>Livraison</span>
+            <strong id="delivery">0.00 DT</strong>
+        </div>
+
+        <small id="deliveryMessage"></small>
+
+        <div class="summary-row total">
+            <span>Total</span>
+            <strong id="cartTotal">0.00 DT</strong>
+        </div>
+
+    </div>
+
+    <button
+        class="checkout-btn"
+        onclick="openCheckout()"
+    >
+        📦 Commander
+    </button>
+
+</div>
+
+
+<!-- CHECKOUT -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeCheckout()"
+        >
+            ×
+        </button>
+
+        <h2>📦 Finaliser la commande</h2>
+
+        <p>
+            Entrez vos informations de livraison.
+        </p>
+
+
+        <div class="form-group">
+
+            <label>
+                Nom complet *
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Votre nom"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Téléphone *
+            </label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="28 000 000"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Adresse *
+            </label>
+
+            <textarea
+                id="customerAddress"
+                placeholder="Votre adresse..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Remarque
+            </label>
+
+            <textarea
+                id="customerNote"
+                placeholder="Ex: sans oignons..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="order-total">
+
+            <span>
+                Total à payer
+            </span>
+
+            <strong id="modalTotal">
+                0.00 DT
+            </strong>
+
+        </div>
+
+
+        <button
+            class="whatsapp"
+            onclick="sendWhatsApp()"
+        >
+            💬 Envoyer sur WhatsApp
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= PRODUCTS ================= */
+
+const products = [
+
+    {
+        id:1,
+        name:"Classic Burger",
+        category:"burger",
+        price:9.5,
+        image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=85",
+        desc:"Steak, fromage, salade et sauce maison."
+    },
+
+    {
+        id:2,
+        name:"Double Cheese",
+        category:"burger",
+        price:13,
+        image:"https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=85",
+        desc:"Double steak, double fromage et sauce."
+    },
+
+    {
+        id:3,
+        name:"Chicken Burger",
+        category:"burger",
+        price:10,
+        image:"https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet croustillant, fromage et salade."
+    },
+
+    {
+        id:4,
+        name:"Bacon Burger",
+        category:"burger",
+        price:12,
+        image:"https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=800&q=85",
+        desc:"Steak, bacon, fromage et sauce barbecue."
+    },
+
+    {
+        id:5,
+        name:"Pizza Margherita",
+        category:"pizza",
+        price:11,
+        image:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=85",
+        desc:"Tomate, mozzarella et basilic."
+    },
+
+    {
+        id:6,
+        name:"Pizza Pepperoni",
+        category:"pizza",
+        price:14,
+        image:"https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=800&q=85",
+        desc:"Pepperoni, mozzarella et sauce tomate."
+    },
+
+    {
+        id:7,
+        name:"Pizza 4 Fromages",
+        category:"pizza",
+        price:15,
+        image:"https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=800&q=85",
+        desc:"Quatre fromages fondants."
+    },
+
+    {
+        id:8,
+        name:"Pizza Chicken",
+        category:"pizza",
+        price:14,
+        image:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet, fromage et sauce tomate."
+    },
+
+    {
+        id:9,
+        name:"Tacos Poulet",
+        category:"tacos",
+        price:10,
+        image:"https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet, fromage, frites et sauce."
+    },
+
+    {
+        id:10,
+        name:"Tacos Viande",
+        category:"tacos",
+        price:11,
+        image:"https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=800&q=85",
+        desc:"Viande, fromage et sauce maison."
+    },
+
+    {
+        id:11,
+        name:"Tacos Mixte",
+        category:"tacos",
+        price:13,
+        image:"https://images.unsplash.com/photo-1613514785940-daed07799d9b?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet, viande, fromage et sauce."
+    },
+
+    {
+        id:12,
+        name:"Tacos Crispy",
+        category:"tacos",
+        price:12,
+        image:"https://images.unsplash.com/photo-1624300629298-e9de39c13be5?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet crispy, fromage et sauce."
+    },
+
+    {
+        id:13,
+        name:"Sandwich Poulet",
+        category:"sandwich",
+        price:8,
+        image:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet grillé, salade et fromage."
+    },
+
+    {
+        id:14,
+        name:"Club Sandwich",
+        category:"sandwich",
+        price:9,
+        image:"https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet, fromage, tomate et salade."
+    },
+
+    {
+        id:15,
+        name:"Crispy Sandwich",
+        category:"sandwich",
+        price:9.5,
+        image:"https://images.unsplash.com/photo-1567234669003-dce7a7a888c8?auto=format&fit=crop&w=800&q=85",
+        desc:"Poulet crispy et sauce maison."
+    },
+
+    {
+        id:16,
+        name:"Frites",
+        category:"sandwich",
+        price:4,
+        image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=85",
+        desc:"Frites croustillantes."
+    },
+
+    {
+        id:17,
+        name:"Coca Cola",
+        category:"boisson",
+        price:2.5,
+        image:"https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=800&q=85",
+        desc:"Boisson fraîche."
+    },
+
+    {
+        id:18,
+        name:"Jus Orange",
+        category:"boisson",
+        price:3,
+        image:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=85",
+        desc:"Jus d'orange frais."
+    },
+
+    {
+        id:19,
+        name:"Milkshake",
+        category:"boisson",
+        price:6,
+        image:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=85",
+        desc:"Milkshake gourmand."
+    },
+
+    {
+        id:20,
+        name:"Eau",
+        category:"boisson",
+        price:1.5,
+        image:"https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=85",
+        desc:"Eau minérale fraîche."
+    }
+
+];
+
+
+/* ================= SETTINGS ================= */
+
+const WHATSAPP = "21628196516";
+
+const DELIVERY_PRICE = 5;
+
+const FREE_DELIVERY_FROM = 30;
+
+let cart = [];
+
+
+/* ================= DISPLAY ================= */
+
+function displayProducts(category = "all"){
+
+    const container = document.getElementById("products");
+
+    const list =
+        category === "all"
+        ? products
+        : products.filter(p => p.category === category);
+
+    container.innerHTML = list.map(product => `
+
+        <div class="card">
+
+            <div class="card-img">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>${product.name}</h3>
+
+                <p>${product.desc}</p>
+
+                <div class="price">
+                    ${product.price.toFixed(2)} DT
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(${product.id})"
+                >
+                    🛒 Ajouter au panier
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+}
+
+
+/* ================= FILTER ================= */
+
+function filterProducts(category, button){
+
+    document
+        .querySelectorAll(".categories button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    displayProducts(category);
+}
+
+
+/* ================= CART ================= */
+
+function addToCart(id){
+
+    const existing = cart.find(item => item.id === id);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            id:id,
+            quantity:1
+        });
+
+    }
+
+    updateCart();
+
+    openCart();
+}
+
+
+function changeQuantity(id, amount){
+
+    const item = cart.find(item => item.id === id);
+
+    if(!item) return;
+
+    item.quantity += amount;
+
+    if(item.quantity <= 0){
+
+        cart = cart.filter(item => item.id !== id);
+
+    }
+
+    updateCart();
+}
+
+
+function removeItem(id){
+
+    cart = cart.filter(item => item.id !== id);
+
+    updateCart();
+}
+
+
+function getSubtotal(){
+
+    return cart.reduce((total,item) => {
+
+        const product =
+            products.find(p => p.id === item.id);
+
+        return total + product.price * item.quantity;
+
+    },0);
+}
+
+
+function getDelivery(){
+
+    const subtotal = getSubtotal();
+
+    if(subtotal === 0){
+
+        return 0;
+
+    }
+
+    if(subtotal >= FREE_DELIVERY_FROM){
+
+        return 0;
+
+    }
+
+    return DELIVERY_PRICE;
+}
+
+
+function getTotal(){
+
+    return getSubtotal() + getDelivery();
+}
+
+
+/* ================= UPDATE CART ================= */
+
+function updateCart(){
+
+    const count =
+        cart.reduce(
+            (sum,item) => sum + item.quantity,
+            0
+        );
+
+    document.getElementById("cartCount").textContent = count;
+
+
+    const container =
+        document.getElementById("cartItems");
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:50px 10px;
+                color:#777;
+            ">
+                <div style="font-size:55px;">
+                    🛒
+                </div>
+
+                <h3>Votre panier est vide</h3>
+
+                <p style="margin-top:10px;">
+                    Ajoutez vos produits préférés.
+                </p>
+            </div>
+        `;
+
+    }else{
+
+        container.innerHTML = cart.map(item => {
+
+            const product =
+                products.find(p => p.id === item.id);
+
+            return `
+
+                <div class="cart-item">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                    >
+
+                    <div class="cart-item-info">
+
+                        <h4>
+                            ${product.name}
+                        </h4>
+
+                        <small>
+                            ${product.price.toFixed(2)} DT
+                        </small>
+
+                        <div class="quantity">
+
+                            <button
+                                onclick="changeQuantity(${product.id},-1)"
+                            >
+                                −
+                            </button>
+
+                            <strong>
+                                ${item.quantity}
+                            </strong>
+
+                            <button
+                                onclick="changeQuantity(${product.id},1)"
+                            >
+                                +
+                            </button>
+
+                            <button
+                                class="remove"
+                                onclick="removeItem(${product.id})"
+                            >
+                                🗑️
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+    }
+
+
+    const subtotal = getSubtotal();
+
+    const delivery = getDelivery();
+
+    const total = subtotal + delivery;
+
+
+    document.getElementById("subtotal").textContent =
+        subtotal.toFixed(2) + " DT";
+
+
+    document.getElementById("delivery").textContent =
+        delivery === 0 && subtotal > 0
+        ? "GRATUITE"
+        : delivery.toFixed(2) + " DT";
+
+
+    document.getElementById("cartTotal").textContent =
+        total.toFixed(2) + " DT";
+
+
+    const message =
+        document.getElementById("deliveryMessage");
+
+
+    if(subtotal === 0){
+
+        message.textContent = "";
+
+    }else if(subtotal >= FREE_DELIVERY_FROM){
+
+        message.textContent =
+            "🎉 Livraison gratuite !";
+
+    }else{
+
+        const remaining =
+            FREE_DELIVERY_FROM - subtotal;
+
+        message.textContent =
+            "Ajoutez " +
+            remaining.toFixed(2) +
+            " DT pour avoir la livraison gratuite.";
+
+    }
+
+
+    document.getElementById("modalTotal").textContent =
+        total.toFixed(2) + " DT";
+}
+
+
+/* ================= CART OPEN/CLOSE ================= */
+
+function openCart(){
+
+    document
+        .getElementById("cart")
+        .classList.add("open");
+
+    document
+        .getElementById("overlay")
+        .classList.add("show");
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById("cart")
+        .classList.remove("open");
+
+    document
+        .getElementById("overlay")
+        .classList.remove("show");
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function openCheckout(){
+
+    if(cart.length === 0){
+
+        alert("Votre panier est vide !");
+
+        return;
+
+    }
+
+    closeCart();
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+    updateCart();
+}
+
+
+function closeCheckout(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+}
+
+
+/* ================= WHATSAPP ================= */
+
+function sendWhatsApp(){
+
+    const name =
+        document
+            .getElementById("customerName")
+            .value.trim();
+
+    const phone =
+        document
+            .getElementById("customerPhone")
+            .value.trim();
+
+    const address =
+        document
+            .getElementById("customerAddress")
+            .value.trim();
+
+    const note =
+        document
+            .getElementById("customerNote")
+            .value.trim();
+
+
+    if(!name || !phone || !address){
+
+        alert(
+            "Veuillez remplir le nom, téléphone et adresse."
+        );
+
+        return;
+
+    }
+
+
+    let orderText = "";
+
+    cart.forEach(item => {
+
+        const product =
+            products.find(p => p.id === item.id);
+
+        const lineTotal =
+            product.price * item.quantity;
+
+        orderText +=
+            `• ${product.name} x${item.quantity} = ${lineTotal.toFixed(2)} DT\n`;
+
+    });
+
+
+    const subtotal = getSubtotal();
+
+    const delivery = getDelivery();
+
+    const total = getTotal();
+
+
+    const message =
+
+`🍔 *NOUVELLE COMMANDE - FOOD EXPRESS*
+
+👤 *Client :* ${name}
+
+📱 *Téléphone :* ${phone}
+
+📍 *Adresse :* ${address}
+
+🛒 *Commande :*
+
+${orderText}
+💰 Sous-total : ${subtotal.toFixed(2)} DT
+
+🚚 Livraison : ${
+    delivery === 0
+    ? "GRATUITE"
+    : delivery.toFixed(2) + " DT"
+}
+
+💵 *TOTAL : ${total.toFixed(2)} DT*
+
+${note ? "📝 Remarque : " + note : ""}
+
+Merci 🙏`;
+
+
+    const url =
+        "https://wa.me/" +
+        WHATSAPP +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(url,"_blank");
+
+}
+
+
+/* ================= START ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        displayProducts();
+
+        updateCart();
+
+    }
+);
+
+
+/* CLOSE MODAL BY CLICKING OUTSIDE */
+
+document
+    .getElementById("modal")
+    .addEventListener("click",function(e){
+
+        if(e.target === this){
+
+            closeCheckout();
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
